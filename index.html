@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digitale Transformation in der Bildung — Christof Glaus, DLH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css" id="theme">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+
+        :root {
+            --r-background-color: #0a0a0a;
+            --r-main-font: 'Inter', sans-serif;
+            --r-heading-font: 'Inter', sans-serif;
+            --r-main-color: #e8e8e8;
+            --r-heading-color: #ffffff;
+            --accent: #3b82f6;
+            --accent-warm: #f59e0b;
+            --accent-green: #10b981;
+            --accent-purple: #8b5cf6;
+            --accent-rose: #f43f5e;
+        }
+
+        .reveal {
+            font-family: var(--r-main-font);
+            font-weight: 300;
+        }
+
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: var(--r-heading-font);
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+        }
+
+        .reveal h1 { font-size: 2.8em; font-weight: 900; }
+        .reveal h2 { font-size: 2em; }
+        .reveal h3 { font-size: 1.4em; font-weight: 600; }
+
+        .reveal p {
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        .reveal .slides section {
+            padding: 40px;
+        }
+
+        /* Title slide */
+        .title-slide {
+            text-align: left !important;
+        }
+        .title-slide .name {
+            font-size: 3.2em;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.1em;
+        }
+        .title-slide .role {
+            font-size: 1.3em;
+            color: #888;
+            font-weight: 400;
+            margin-bottom: 0.3em;
+        }
+        .title-slide .institution {
+            font-size: 1em;
+            color: #666;
+            font-weight: 300;
+        }
+        .title-slide .event-badge {
+            display: inline-block;
+            margin-top: 2em;
+            padding: 0.5em 1.2em;
+            border: 1px solid #333;
+            border-radius: 100px;
+            font-size: 0.7em;
+            color: #888;
+            letter-spacing: 0.05em;
+        }
+
+        /* KI Definition slide */
+        .ki-definition {
+            text-align: left !important;
+        }
+        .ki-definition .ki-label {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: var(--accent-warm);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5em;
+        }
+        .ki-definition blockquote {
+            border: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+            background: none;
+            font-size: 1.6em;
+            font-weight: 700;
+            line-height: 1.35;
+            color: #fff;
+        }
+        .ki-definition blockquote .highlight {
+            color: var(--accent-warm);
+        }
+        .ki-definition blockquote .dim {
+            color: #666;
+        }
+
+        /* Pillar slides */
+        .pillar-slide {
+            text-align: left !important;
+        }
+        .pillar-slide .pillar-number {
+            font-size: 5em;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.1em;
+        }
+        .pillar-slide .pillar-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 0.4em;
+        }
+        .pillar-slide .pillar-desc {
+            font-size: 1em;
+            color: #aaa;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+        .pillar-slide .pillar-examples {
+            margin-top: 1.5em;
+            display: flex;
+            gap: 1em;
+            flex-wrap: wrap;
+        }
+        .pillar-slide .example-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 0.8em 1.2em;
+            font-size: 0.8em;
+            color: #ccc;
+        }
+
+        /* Color accents per pillar */
+        .pillar-activate .pillar-number { color: var(--accent); }
+        .pillar-activate .pillar-title { color: var(--accent); }
+        .pillar-simplify .pillar-number { color: var(--accent-green); }
+        .pillar-simplify .pillar-title { color: var(--accent-green); }
+        .pillar-individual .pillar-number { color: var(--accent-purple); }
+        .pillar-individual .pillar-title { color: var(--accent-purple); }
+        .pillar-plural .pillar-number { color: var(--accent-rose); }
+        .pillar-plural .pillar-title { color: var(--accent-rose); }
+
+        /* Overview slide */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5em;
+            margin-top: 1.5em;
+            text-align: left;
+        }
+        .overview-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 1.5em;
+            transition: transform 0.3s;
+        }
+        .overview-card:hover {
+            transform: translateY(-4px);
+        }
+        .overview-card .card-icon {
+            font-size: 1.8em;
+            margin-bottom: 0.4em;
+        }
+        .overview-card h3 {
+            font-size: 1.1em;
+            margin-bottom: 0.3em;
+        }
+        .overview-card p {
+            font-size: 0.75em;
+            color: #888;
+        }
+        .oc-activate h3 { color: var(--accent); }
+        .oc-simplify h3 { color: var(--accent-green); }
+        .oc-individual h3 { color: var(--accent-purple); }
+        .oc-plural h3 { color: var(--accent-rose); }
+
+        /* Event context slide */
+        .event-slide {
+            text-align: left !important;
+        }
+        .event-slide .event-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.8em;
+            line-height: 1.3;
+        }
+        .event-slide .event-meta {
+            font-size: 0.85em;
+            color: #888;
+            line-height: 2;
+        }
+        .event-slide .event-meta strong {
+            color: #bbb;
+        }
+
+        /* Closing slide */
+        .closing-slide {
+            text-align: center !important;
+        }
+        .closing-slide .closing-message {
+            font-size: 2em;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple), var(--accent-rose));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5em;
+        }
+        .closing-slide .closing-sub {
+            color: #666;
+            font-size: 1em;
+        }
+
+        /* Subtle slide-in animations */
+        .reveal .slides section .fragment.fade-up {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .reveal .slides section .fragment.fade-up.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Progress bar */
+        .reveal .progress {
+            color: var(--accent);
+            height: 3px;
+        }
+
+        /* Slide number */
+        .reveal .slide-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6em;
+            color: #444;
+        }
+
+        /* Decorative line */
+        .accent-line {
+            width: 60px;
+            height: 3px;
+            border-radius: 2px;
+            margin: 1em 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .overview-grid {
+                grid-template-columns: 1fr;
+            }
+            .title-slide .name {
+                font-size: 2.2em;
+            }
+            .ki-definition blockquote {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Slide 1: Title -->
+            <section class="title-slide">
+                <div class="name">Christof Glaus</div>
+                <div class="role">Vertretung DLH</div>
+                <div class="institution">
+                    Digitales Lehr- und Lernhaus<br>
+                    Institution des DiWaSekII Programms
+                </div>
+                <div class="event-badge">
+                    KGV Erfahrungsaustausch Berufsbildung &mdash; 2. März 2026, Winterthur
+                </div>
+            </section>
+
+            <!-- Slide 2: Event Context -->
+            <section class="event-slide">
+                <div class="ki-label" style="font-size:0.8em; font-weight:600; color:#3b82f6; text-transform:uppercase; letter-spacing:0.15em; margin-bottom:1em;">Kontext</div>
+                <div class="event-title">
+                    Künstliche Intelligenz &mdash;<br>
+                    aus schulischer Sicht eine Gefahr,<br>
+                    aus wirtschaftlicher Sicht eine Chance?
+                </div>
+                <div class="event-meta">
+                    <strong>Veranstaltung:</strong> KGV Erfahrungsaustausch Berufsbildung<br>
+                    <strong>Ort:</strong> BMS Winterthur, Anton Graff-Schulhaus<br>
+                    <strong>Datum:</strong> 2. März 2026, 18:00 – 20:00 Uhr<br>
+                    <strong>Perspektive:</strong> Sicht der Berufsfachschule
+                </div>
+            </section>
+
+            <!-- Slide 3: KI Definition (separate slide as requested) -->
+            <section class="ki-definition">
+                <div class="ki-label">These</div>
+                <blockquote>
+                    KI <span class="dim">nicht</span> mit Intelligenz
+                    in einen Zusammenhang bringen —<br><br>
+                    <span class="dim">sondern mit einer</span>
+                    <span class="highlight">maschinellen Technik</span>,<br>
+                    <span class="dim">die mit Daten formatüberschreitend</span><br>
+                    <span class="highlight">Komplexität reduziert</span><br>
+                    <span class="dim">und</span>
+                    <span class="highlight">Arbeitsabläufe rationalisiert</span>.
+                </blockquote>
+            </section>
+
+            <!-- Slide 4: Overview - 4 Pillars -->
+            <section>
+                <h2 style="text-align:left; font-size:1.6em; margin-bottom:0.2em;">Digitale Transformation</h2>
+                <p style="text-align:left; color:#666; font-size:0.85em;">Vier Dimensionen in der Bildung</p>
+                <div class="overview-grid">
+                    <div class="overview-card oc-activate">
+                        <div class="card-icon">01</div>
+                        <h3>Aktiviert</h3>
+                        <p>Inhalte werden lebendig und interaktiv zugänglich</p>
+                    </div>
+                    <div class="overview-card oc-simplify">
+                        <div class="card-icon">02</div>
+                        <h3>Vereinfacht</h3>
+                        <p>Komplexe Inhalte werden verständlich aufbereitet</p>
+                    </div>
+                    <div class="overview-card oc-individual">
+                        <div class="card-icon">03</div>
+                        <h3>Individualisiert</h3>
+                        <p>Lernwege passen sich dem Individuum an</p>
+                    </div>
+                    <div class="overview-card oc-plural">
+                        <div class="card-icon">04</div>
+                        <h3>Pluralisiert</h3>
+                        <p>Lernräume erweitern sich über das Klassenzimmer hinaus</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Pillar 1 - Aktiviert -->
+            <section class="pillar-slide pillar-activate">
+                <div class="pillar-number">01</div>
+                <div class="pillar-title">Inhalte aktiviert</div>
+                <div class="accent-line" style="background: var(--accent);"></div>
+                <div class="pillar-desc">
+                    Digitale Transformation macht Bildungsinhalte lebendig.
+                    Statische Lehrmittel werden zu interaktiven Erfahrungen,
+                    die Lernende aktiv einbeziehen statt passiv zu berieseln.
+                </div>
+                <div class="pillar-examples">
+                    <div class="example-card">Interaktive Simulationen</div>
+                    <div class="example-card">Echtzeit-Feedback</div>
+                    <div class="example-card">Multimediale Inhalte</div>
+                    <div class="example-card">Gamification</div>
+                </div>
+            </section>
+
+            <!-- Slide 6: Pillar 2 - Vereinfacht -->
+            <section class="pillar-slide pillar-simplify">
+                <div class="pillar-number">02</div>
+                <div class="pillar-title">Inhalte vereinfacht</div>
+                <div class="accent-line" style="background: var(--accent-green);"></div>
+                <div class="pillar-desc">
+                    KI-gestützte Werkzeuge reduzieren Komplexität auf das Wesentliche.
+                    Schwierige Konzepte werden schrittweise aufgebaut,
+                    visualisiert und in verständliche Einheiten zerlegt.
+                </div>
+                <div class="pillar-examples">
+                    <div class="example-card">Automatische Zusammenfassungen</div>
+                    <div class="example-card">Adaptive Erklärungen</div>
+                    <div class="example-card">Visuelle Aufbereitung</div>
+                    <div class="example-card">Sprachniveau-Anpassung</div>
+                </div>
+            </section>
+
+            <!-- Slide 7: Pillar 3 - Individualisiert -->
+            <section class="pillar-slide pillar-individual">
+                <div class="pillar-number">03</div>
+                <div class="pillar-title">Lernwege individualisiert</div>
+                <div class="accent-line" style="background: var(--accent-purple);"></div>
+                <div class="pillar-desc">
+                    Jeder Lernende erhält einen massgeschneiderten Pfad.
+                    Tempo, Tiefe und Methodik passen sich dynamisch
+                    an Vorkenntnisse, Stärken und Lernziele an.
+                </div>
+                <div class="pillar-examples">
+                    <div class="example-card">Personalisierte Lernpfade</div>
+                    <div class="example-card">Diagnose von Wissenslücken</div>
+                    <div class="example-card">Adaptive Aufgaben</div>
+                    <div class="example-card">Selbstgesteuertes Lernen</div>
+                </div>
+            </section>
+
+            <!-- Slide 8: Pillar 4 - Pluralisiert -->
+            <section class="pillar-slide pillar-plural">
+                <div class="pillar-number">04</div>
+                <div class="pillar-title">Lernräume pluralisiert</div>
+                <div class="accent-line" style="background: var(--accent-rose);"></div>
+                <div class="pillar-desc">
+                    Lernen findet nicht mehr nur im Klassenzimmer statt.
+                    Digitale Räume erweitern den physischen Unterricht und
+                    ermöglichen Kollaboration über Ort und Zeit hinweg.
+                </div>
+                <div class="pillar-examples">
+                    <div class="example-card">Hybride Lernformate</div>
+                    <div class="example-card">Virtuelle Zusammenarbeit</div>
+                    <div class="example-card">Orts- &amp; zeitunabhängig</div>
+                    <div class="example-card">Offene Bildungsressourcen</div>
+                </div>
+            </section>
+
+            <!-- Slide 9: Closing -->
+            <section class="closing-slide">
+                <div class="closing-message">
+                    Technik ermöglichen.<br>
+                    Bildung gestalten.
+                </div>
+                <div class="closing-sub">
+                    Christof Glaus &mdash; DLH / DiWaSekII
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            slideNumber: true,
+            progress: true,
+            center: true,
+            transition: 'slide',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            width: 1280,
+            height: 720,
+            margin: 0.1,
+        });
+    </script>
+</body>
+</html>
